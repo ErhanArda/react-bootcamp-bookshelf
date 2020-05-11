@@ -1,4 +1,5 @@
 import { HomePage } from "./containers"
+import { AddBook } from "./containers"
 
 const routes = [
     {
@@ -8,8 +9,8 @@ const routes = [
         component: HomePage
     },
     {
-        title:"Add Book",
-        path:"add-book",
+        title: "Add Book",
+        path: "/add-book",
         exact: false,
         component: AddBook
     }

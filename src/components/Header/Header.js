@@ -29,13 +29,19 @@ const Header = () => {
                                 return <NavItem>
                                     <NavLink tag={Link} to={nav.to}>{nav.title}</NavLink>
                                 </NavItem>
-                            })
+                            }
+                            )
                         }
                     </Nav>
                     {
                         navigation.right.map((nav) => {
-                            return <NavLink tag={Link} to={nav.to}>{nav.title}</NavLink>
-                        })
+                            return <NavbarText>
+                                <NavLink tag={Link} to={nav.to}>
+                                    {nav.title}
+                                </NavLink>
+                            </NavbarText>
+                        }
+                        )
                     }
                 </Collapse>
             </Navbar>
