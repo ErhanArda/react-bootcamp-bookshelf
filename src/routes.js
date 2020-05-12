@@ -4,7 +4,7 @@ import { AddBook } from "./containers"
 const routes = [
     {
         title: "Home Page",
-        path: "/",
+        path: "/react-bootcamp-bookshelf",
         exact: true,
         component: HomePage
     },

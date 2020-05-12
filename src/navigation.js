@@ -2,7 +2,7 @@ const navigation = {
     left: [
         {
             title: "Home Page",
-            to: "/"
+            to: "/react-bootcamp-bookshelf"
         },
         {
             title: "Read Books",
