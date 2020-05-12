@@ -1,23 +1,26 @@
 import React, { Component } from 'react'
+import { Container } from "reactstrap"
 
 class MainLayout extends Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props)
-    
+
     }
-    
+
     //changes tab title
-    componentDidMount(){
+    componentDidMount() {
         const title = this.props.title;
         document.title = title
     }
-    
+
     render() {
         console.log(this.props)
         return (
             <div>
-                {this.props.children()}
+                <Container>
+                    {this.props.children()}
+                </Container>
             </div>
         )
     }
