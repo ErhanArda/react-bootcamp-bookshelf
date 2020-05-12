@@ -1,9 +1,11 @@
 import React from 'react'
 import { AddBookForm } from "../../components"
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
 
 const AddBook = () => {
     return (
+        <Container>
+
         <Row>
             <Col xs={12}>
                 <h3>Add a new book</h3>
@@ -12,7 +14,7 @@ const AddBook = () => {
                 <AddBookForm />
             </Col>
         </Row>
-        // npm install yup --save
+        </Container>
     )
 }
 

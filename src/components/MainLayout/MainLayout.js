@@ -20,9 +20,7 @@ class MainLayout extends Component {
         const Children = this.props.children
         return (
             <div>
-                <Container>
                     <Children />
-                </Container>
             </div>
         )
     }

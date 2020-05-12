@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { Books } from "../../components"
-import {getBooks} from "../../state/ducks/books/actions"
+import { Books, FilterSortBar } from "../../components"
+import { getBooks } from "../../state/ducks/books/actions"
+import { Container } from 'reactstrap'
 
 export class HomePage extends Component {
     // eslint-disable-next-line no-useless-constructor
@@ -9,19 +10,21 @@ export class HomePage extends Component {
         super(props)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getBooks()
     }
 
 
     render() {
-        if(this.props.loading){
+        if (this.props.loading) {
             return <h1>Books are loading...</h1>
         }
         return (
             <div>
-                <h3>HomePage</h3>
-                <Books items={this.props.books} />
+                <FilterSortBar />
+                <Container>
+                    <Books items={this.props.books} />
+                </Container>
             </div>
         )
     }
