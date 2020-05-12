@@ -1,9 +1,18 @@
 import React from 'react'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { connect } from "react-redux"
+import { Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
 import { Formik } from "formik"
 import { categories, ratings, statuses } from "../../constants"
+import * as Yup from "yup"
+import { addBook } from "../../state/ducks/books/actions"
 
-const AddBookForm = () => {
+
+const validationSchema = Yup.object().shape({
+    title: Yup.string().required("Title is a required field"),
+    author: Yup.string().required("Author is a required field")
+});
+
+const AddBookForm = (props) => {
     return (
         <div>
             <Formik initialValues={{
@@ -14,8 +23,10 @@ const AddBookForm = () => {
                 rating: "",
                 imageUrl: ""
             }}
+                validationSchema={validationSchema}
                 onSubmit={(values) => {
                     console.log("values:", values)
+                    props.addBook(values)
                 }}
             >
                 {({
@@ -38,7 +49,12 @@ const AddBookForm = () => {
                                     placeholder="name of the book"
                                     value={values.title}
                                     onChange={handleChange}
+                                    invalid={errors.title}
                                 />
+                                {
+                                    errors.title && <FormFeedback>{errors.title}</FormFeedback>
+
+                                }
                             </FormGroup>
                             <FormGroup>
                                 <Label for="author">Author</Label>
@@ -49,7 +65,11 @@ const AddBookForm = () => {
                                     placeholder="author of the book"
                                     value={values.author}
                                     onChange={handleChange}
+                                    invalid={errors.author}
                                 />
+                                {
+                                    errors.author && <FormFeedback>{errors.author}</FormFeedback>
+                                }
                             </FormGroup>
                             <FormGroup>
                                 <Label for="imageUrl">Image URL</Label>
@@ -105,5 +125,8 @@ const AddBookForm = () => {
         </div>
     )
 }
+const mapDispatchToProps = {
+    addBook
+}
 
-export default AddBookForm
+export default connect(null,mapDispatchToProps)(AddBookForm)
