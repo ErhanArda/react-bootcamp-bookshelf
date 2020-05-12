@@ -1,28 +1,42 @@
 import React from 'react'
-import { Nav } from 'reactstrap';
-import {StyledNavbarText} from "./FilterSortBarStyles"
+import { Nav } from 'reactstrap'
+import { connect } from "react-redux"
+import { StyledNavbarText } from "./FilterSortBarStyles"
 import { categories } from '../../constants';
+import { setFilter } from '../../state/ducks/books/actions';
 
 
-const FilterSortBar = () => {
+const FilterSortBar = (props) => {
     return (
         <div>
             <Nav className="bg-white">
                 <StyledNavbarText> <strong>Categories:</strong> </StyledNavbarText>
-                <StyledNavbarText> All </StyledNavbarText>
+                <StyledNavbarText active={!props.activeFilter} onClick={() => {
+                    props.changeFilter("")
+                }}> All </StyledNavbarText>
                 {
-                    categories.map((category,index) => {
-                        return <StyledNavbarText active={index===2}>
+                    categories.map((category) => {
+                        return <StyledNavbarText active={props.activeFilter === category}
+                            onClick={() => {
+                                props.changeFilter(category)
+                            }}
+                        >
                             {category}
                         </StyledNavbarText>
                     })
                 }
             </Nav>
-            <hr />
-
         </div>
 
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        activeFilter: state.books.filter
+    }
+}
 
-export default FilterSortBar
+const mapDispatchToProps = {
+    changeFilter: setFilter
+}
+export default connect(mapStateToProps, mapDispatchToProps)(FilterSortBar)

@@ -1,11 +1,11 @@
 import React from 'react'
 import {
-    Card, CardImg, CardText, CardBody, CardLink
+    CardImg, CardText, CardBody, CardLink
 } from 'reactstrap';
 import {StyledBook} from "./BookStyles"
 
 const Book = (props) => {
-    console.log(props)
+    //console.log(props)
     const { imageUrl, title, rating } = props
     return (
         <StyledBook>
