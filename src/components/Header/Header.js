@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <div>
             <Navbar color="dark" dark expand="md">
-                <NavbarBrand tag={Link} to="/">Bookshelf</NavbarBrand>
+                <NavbarBrand tag={Link} to="/react-bootcamp-bookshelf">Bookshelf</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
