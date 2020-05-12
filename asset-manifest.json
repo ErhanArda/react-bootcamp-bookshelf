@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-bootcamp-bookshelf/static/css/main.990dbf5c.chunk.css",
-    "main.js": "/react-bootcamp-bookshelf/static/js/main.8319b234.chunk.js",
-    "main.js.map": "/react-bootcamp-bookshelf/static/js/main.8319b234.chunk.js.map",
+    "main.js": "/react-bootcamp-bookshelf/static/js/main.294764b4.chunk.js",
+    "main.js.map": "/react-bootcamp-bookshelf/static/js/main.294764b4.chunk.js.map",
     "runtime-main.js": "/react-bootcamp-bookshelf/static/js/runtime-main.e9184b8b.js",
     "runtime-main.js.map": "/react-bootcamp-bookshelf/static/js/runtime-main.e9184b8b.js.map",
     "static/css/2.de424728.chunk.css": "/react-bootcamp-bookshelf/static/css/2.de424728.chunk.css",
     "static/js/2.e0a194ed.chunk.js": "/react-bootcamp-bookshelf/static/js/2.e0a194ed.chunk.js",
     "static/js/2.e0a194ed.chunk.js.map": "/react-bootcamp-bookshelf/static/js/2.e0a194ed.chunk.js.map",
     "index.html": "/react-bootcamp-bookshelf/index.html",
-    "precache-manifest.36dda830e916f0170ba54f5300859708.js": "/react-bootcamp-bookshelf/precache-manifest.36dda830e916f0170ba54f5300859708.js",
+    "precache-manifest.0b28fcd1388093c59fe94e53d6e05fcc.js": "/react-bootcamp-bookshelf/precache-manifest.0b28fcd1388093c59fe94e53d6e05fcc.js",
     "service-worker.js": "/react-bootcamp-bookshelf/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/react-bootcamp-bookshelf/static/css/2.de424728.chunk.css.map",
     "static/css/main.990dbf5c.chunk.css.map": "/react-bootcamp-bookshelf/static/css/main.990dbf5c.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.de424728.chunk.css",
     "static/js/2.e0a194ed.chunk.js",
     "static/css/main.990dbf5c.chunk.css",
-    "static/js/main.8319b234.chunk.js"
+    "static/js/main.294764b4.chunk.js"
   ]
 }
