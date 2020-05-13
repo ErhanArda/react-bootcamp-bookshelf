@@ -3,7 +3,8 @@ import * as Actions from "./actionTypes"
 const initialState = {
     data: [],
     loading: false,
-    filter:""
+    filter:"",
+    searchTerm:""
 }
 
 const booksReducer = (state = initialState, action) => {
@@ -29,6 +30,11 @@ const booksReducer = (state = initialState, action) => {
                 ...state,
                 filter:action.payload
             }
+            case Actions.SEARCH_BOOKS:
+                return {
+                    ...state,
+                    searchTerm: action.payload
+                }
         default:
             return state
     }

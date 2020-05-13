@@ -22,12 +22,20 @@ export class HomePage extends Component {
         //console.log("filter",this.props.filter)
         const allBooks = this.props.books;
         let filteredBooks = []
+        // filter for category
         if (this.props.filter) {
             filteredBooks = allBooks.filter((book) => {
                 return book.category === this.props.filter
             })
         } else {
             filteredBooks = allBooks
+        }
+
+        //filter for searchTerm
+        if(this.props.searchTerm){
+            filteredBooks = filteredBooks.filter((book)=>{
+                return book.title.toLowerCase().indexOf(this.props.searchTerm.toLowerCase()) > -1
+            })
         }
 
         let books = "";
@@ -41,7 +49,9 @@ export class HomePage extends Component {
             <div>
                 <FilterSortBar />
                 <Container>
-                    {books}
+                    <div className="books-holder">
+                        {books}
+                    </div>
                 </Container>
             </div>
         )
@@ -54,7 +64,8 @@ const mapStateToProps = (state) => {
     return {
         books: state.books.data,
         loading: state.books.loading,
-        filter: state.books.filter
+        filter: state.books.filter,
+        searchTerm: state.books.searchTerm
 
     }
 }

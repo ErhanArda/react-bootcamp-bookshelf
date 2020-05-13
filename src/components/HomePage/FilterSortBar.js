@@ -1,31 +1,49 @@
 import React from 'react'
-import { Nav } from 'reactstrap'
+import { Nav, Container, Row, Col, InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap'
 import { connect } from "react-redux"
 import { StyledNavbarText } from "./FilterSortBarStyles"
 import { categories } from '../../constants';
-import { setFilter } from '../../state/ducks/books/actions';
+import { setFilter, searchBooks } from '../../state/ducks/books/actions';
 
 
 const FilterSortBar = (props) => {
     return (
         <div>
-            <Nav className="bg-white">
-                <StyledNavbarText> <strong>Categories:</strong> </StyledNavbarText>
-                <StyledNavbarText active={!props.activeFilter} onClick={() => {
-                    props.changeFilter("")
-                }}> All </StyledNavbarText>
-                {
-                    categories.map((category) => {
-                        return <StyledNavbarText active={props.activeFilter === category}
-                            onClick={() => {
-                                props.changeFilter(category)
-                            }}
-                        >
-                            {category}
-                        </StyledNavbarText>
-                    })
-                }
-            </Nav>
+
+            <Container fluid className="bg-white" style={{padding:"15px"}}>
+                <Row>
+                    <Col xs={6}>
+                        <Nav>
+                            <StyledNavbarText> <strong>Categories:</strong> </StyledNavbarText>
+                            <StyledNavbarText active={!props.activeFilter} onClick={() => {
+                                props.changeFilter("")
+                            }}> All </StyledNavbarText>
+                            {
+                                categories.map((category) => {
+                                    return <StyledNavbarText active={props.activeFilter === category}
+                                        onClick={() => {
+                                            props.changeFilter(category)
+                                        }}
+                                    >
+                                        {category}
+                                    </StyledNavbarText>
+                                })
+                            }
+                        </Nav>
+                    </Col>
+                    <Col xs={6}>
+                        <InputGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Search by Name</InputGroupText>
+                            </InputGroupAddon>
+                            <Input onChange={(e)=>{
+                                props.search(e.target.value)
+                            }} />
+                        </InputGroup>
+                    </Col>
+                </Row>
+            </Container>
+
         </div>
 
     )
@@ -37,6 +55,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    changeFilter: setFilter
+    changeFilter: setFilter,
+    search: searchBooks
+
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FilterSortBar)

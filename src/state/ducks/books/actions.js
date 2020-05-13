@@ -41,3 +41,12 @@ export const setFilter = (filter) => {
         })
     }
 }
+
+export const searchBooks = (searchTerm) => {
+    return dispatch => {
+        dispatch({
+            type: Actions.SEARCH_BOOKS,
+            payload:searchTerm
+        })
+    }
+}
