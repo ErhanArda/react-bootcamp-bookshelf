@@ -50,3 +50,11 @@ export const searchBooks = (searchTerm) => {
         })
     }
 }
+export const sortBooks = (sortTerm) => {
+    return dispatch => {
+        dispatch({
+            type: Actions.SORT_BOOKS,
+            payload: sortTerm
+        })
+    }
+}

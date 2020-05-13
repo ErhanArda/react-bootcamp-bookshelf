@@ -32,18 +32,29 @@ export class HomePage extends Component {
         }
 
         //filter for searchTerm
-        if(this.props.searchTerm){
-            filteredBooks = filteredBooks.filter((book)=>{
+        if (this.props.searchTerm) {
+            filteredBooks = filteredBooks.filter((book) => {
                 return book.title.toLowerCase().indexOf(this.props.searchTerm.toLowerCase()) > -1
             })
         }
 
+        //Sorting
+        let sortedBooks = [];
+        if (this.props.sortTerm) {
+            sortedBooks = [...filteredBooks].sort((book1,book2) => {
+                return parseInt(book2[this.props.sortTerm]) - parseInt(book1[this.props.sortTerm])
+            })
+        } else {
+            sortedBooks = filteredBooks
+        }
+
+
         let books = "";
-        if (filteredBooks.length < 1) {
+        if (sortedBooks.length < 1) {
             books = <h2>NO BOOK HERE</h2>
         }
         else {
-            books = <Books items={filteredBooks} />
+            books = <Books items={sortedBooks} />
         }
         return (
             <div>
@@ -65,7 +76,8 @@ const mapStateToProps = (state) => {
         books: state.books.data,
         loading: state.books.loading,
         filter: state.books.filter,
-        searchTerm: state.books.searchTerm
+        searchTerm: state.books.searchTerm,
+        sortTerm: state.books.sortTerm
 
     }
 }
