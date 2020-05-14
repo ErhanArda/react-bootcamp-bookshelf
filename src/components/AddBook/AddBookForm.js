@@ -13,22 +13,29 @@ const validationSchema = Yup.object().shape({
     author: Yup.string().required("Author is a required field")
 });
 
+
+
 const AddBookForm = (props) => {
+    let initialValues = {
+        title: "",
+        author: "",
+        category: "",
+        description: "",
+        rating: "",
+        imageUrl: ""
+    }
+    if (props.isEdit && props.book) {
+        initialValues = { ...props.book }
+    }
     return (
         <div>
-            <Formik initialValues={{
-                title: "",
-                author: "",
-                category: "",
-                description: "",
-                rating: "",
-                imageUrl: ""
-            }}
+            <Formik initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
                     console.log("values:", values)
-                    props.addBook(values,props.history)
+                    props.addBook(values, props.history)
                 }}
+                enableReinitialize={true}
             >
                 {({
                     values,
@@ -54,7 +61,6 @@ const AddBookForm = (props) => {
                                 />
                                 {
                                     errors.title && <FormFeedback>{errors.title}</FormFeedback>
-
                                 }
                             </FormGroup>
                             <FormGroup>
@@ -93,7 +99,6 @@ const AddBookForm = (props) => {
                                     }
                                 </Input>
                             </FormGroup>
-
                             <FormGroup>
                                 <Label for="">Description</Label>
                                 <Input type="textarea" name="description" id="description" value={values.description} onChange={handleChange} />
@@ -118,10 +123,12 @@ const AddBookForm = (props) => {
                                     }
                                 </Input>
                             </FormGroup>
-                            <Button color="primary">Add Book</Button>
+                            {
+                                props.isEdit ? <Button color="primary">Edit Book</Button> : <Button color="primary">Add Book</Button>
+
+                            }
                         </Form>
                     )}
-
             </Formik>
         </div>
     )
@@ -130,4 +137,4 @@ const mapDispatchToProps = {
     addBook
 }
 
-export default withRouter(connect(null,mapDispatchToProps)(AddBookForm))
+export default withRouter(connect(null, mapDispatchToProps)(AddBookForm))

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from "reactstrap"
+//import { Container } from "reactstrap"
 
 class MainLayout extends Component {
     // eslint-disable-next-line no-useless-constructor
@@ -20,7 +20,7 @@ class MainLayout extends Component {
         const Children = this.props.children
         return (
             <div>
-                    <Children />
+                <Children routerProps={this.props.routerProps} componentProps={this.props.componentProps} />
             </div>
         )
     }
