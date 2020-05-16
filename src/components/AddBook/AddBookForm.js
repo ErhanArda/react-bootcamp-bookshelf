@@ -10,7 +10,8 @@ import { withRouter } from 'react-router';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is a required field"),
-    author: Yup.string().required("Author is a required field")
+    author: Yup.string().required("Author is a required field"),
+    review: Yup.string().min(30, "You can't enter less than 30 characters")
 });
 
 
@@ -24,8 +25,10 @@ const AddBookForm = (props) => {
         description: "",
         rating: "5",
         imageUrl: "",
-        status: "Not Read"
-    }
+        status: "Not Read",
+        review: "",
+        goodReads: ""
+    };
     if (props.isEdit && props.book) {
         initialValues = { ...props.book }
     }
@@ -34,7 +37,9 @@ const AddBookForm = (props) => {
             <Formik initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
-                    props.isEdit ? props.editBook(values, props.history, props.id) : props.addBook(values, props.history)
+                    props.isEdit ?
+                        props.editBook(values, props.history, props.id)
+                        : props.addBook(values, props.history)
                 }}
                 enableReinitialize={true}
             >
@@ -107,12 +112,38 @@ const AddBookForm = (props) => {
                                 </Input>
                             </FormGroup>
                             <FormGroup>
+                                <Label for="review">Review</Label>
+                                <Input
+                                    type="textarea"
+                                    name="review"
+                                    id="review"
+                                    value={values.review}
+                                    onChange={handleChange}
+                                    invalid={errors.review}
+                                />
+                                {
+                                    errors.review && <FormFeedback>{errors.review}</FormFeedback>
+                                }
+                            </FormGroup>
+
+                            <FormGroup>
                                 <Label for="">Description</Label>
                                 <Input
                                     type="textarea"
                                     name="description"
                                     id="description"
                                     value={values.description}
+                                    onChange={handleChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="goodReads">Good Reads</Label>
+                                <Input
+                                    type="url"
+                                    name="goodReads"
+                                    id="goodReads"
+                                    placeholder="Url for goodReads"
+                                    value={values.goodReads}
                                     onChange={handleChange}
                                 />
                             </FormGroup>
