@@ -1,5 +1,5 @@
 import React from 'react'
-import { Nav, Container, Row, Col, InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap'
+import { Nav, Container, Row, Col, InputGroupAddon, InputGroupText, Input } from 'reactstrap'
 import { connect } from "react-redux"
 import { StyledNavbarText,StyledInputGroup } from "./FilterSortBarStyles"
 import { categories } from '../../constants';
@@ -34,9 +34,9 @@ const FilterSortBar = (props) => {
                     <Col xs={6}>
                         <StyledInputGroup>
                             <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Search by Name</InputGroupText>
+                                <InputGroupText>Search</InputGroupText>
                             </InputGroupAddon>
-                            <Input onChange={(e)=>{
+                            <Input placeholder="by Book or Author" onChange={(e)=>{
                                 props.search(e.target.value)
                             }} />
                         </StyledInputGroup>
