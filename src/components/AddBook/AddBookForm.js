@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap'
 import { Formik } from "formik"
 import { categories, ratings, statuses } from "../../constants"
 import * as Yup from "yup"
-import { addBook } from "../../state/ducks/books/actions"
+import { addBook, editBook } from "../../state/ducks/books/actions"
 import { withRouter } from 'react-router';
 
 
@@ -16,13 +16,15 @@ const validationSchema = Yup.object().shape({
 
 
 const AddBookForm = (props) => {
+    console.log(props);
     let initialValues = {
         title: "",
         author: "",
-        category: "",
+        category: "JavaScript",
         description: "",
-        rating: "",
-        imageUrl: ""
+        rating: "5",
+        imageUrl: "",
+        status: "Not Read"
     }
     if (props.isEdit && props.book) {
         initialValues = { ...props.book }
@@ -32,8 +34,7 @@ const AddBookForm = (props) => {
             <Formik initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
-                    console.log("values:", values)
-                    props.addBook(values, props.history)
+                    props.isEdit ? props.editBook(values, props.history, props.id) : props.addBook(values, props.history)
                 }}
                 enableReinitialize={true}
             >
@@ -54,7 +55,7 @@ const AddBookForm = (props) => {
                                     type="text"
                                     name="title"
                                     id="title"
-                                    placeholder="name of the book"
+                                    placeholder="Name of the book"
                                     value={values.title}
                                     onChange={handleChange}
                                     invalid={errors.title}
@@ -81,17 +82,23 @@ const AddBookForm = (props) => {
                             <FormGroup>
                                 <Label for="imageUrl">Image URL</Label>
                                 <Input
-                                    type="text"
+                                    type="url"
                                     name="imageUrl"
                                     id="imageUrl"
-                                    placeholder="image of the book"
+                                    placeholder="Image of the book"
                                     value={values.imageUrl}
                                     onChange={handleChange}
                                 />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Category</Label>
-                                <Input type="select" name="category" id="category" value={values.category} onChange={handleChange}>
+                                <Input
+                                    type="select"
+                                    name="category"
+                                    id="category"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                >
                                     {
                                         categories.map((category) => {
                                             return <option>{category}</option>
@@ -101,11 +108,23 @@ const AddBookForm = (props) => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="">Description</Label>
-                                <Input type="textarea" name="description" id="description" value={values.description} onChange={handleChange} />
+                                <Input
+                                    type="textarea"
+                                    name="description"
+                                    id="description"
+                                    value={values.description}
+                                    onChange={handleChange}
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Rating</Label>
-                                <Input type="select" name="rating" id="rating" value={values.rating} onChange={handleChange} >
+                                <Input
+                                    type="select"
+                                    name="rating"
+                                    id="rating"
+                                    value={values.rating}
+                                    onChange={handleChange}
+                                >
                                     {
                                         ratings.map((score) => {
                                             return <option>{score}</option>
@@ -115,7 +134,13 @@ const AddBookForm = (props) => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Status</Label>
-                                <Input type="select" name="status" id="status" value={values.status} onChange={handleChange}>
+                                <Input
+                                    type="select"
+                                    name="status"
+                                    id="status"
+                                    value={values.status}
+                                    onChange={handleChange}
+                                >
                                     {
                                         statuses.map((status) => {
                                             return <option>{status}</option>
@@ -124,7 +149,9 @@ const AddBookForm = (props) => {
                                 </Input>
                             </FormGroup>
                             {
-                                props.isEdit ? <Button color="primary">Edit Book</Button> : <Button color="primary">Add Book</Button>
+                                props.isEdit ?
+                                    <Button color="primary">Edit Book</Button>
+                                    : <Button color="primary">Add Book</Button>
 
                             }
                         </Form>
@@ -134,7 +161,8 @@ const AddBookForm = (props) => {
     )
 }
 const mapDispatchToProps = {
-    addBook
+    addBook,
+    editBook
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(AddBookForm))

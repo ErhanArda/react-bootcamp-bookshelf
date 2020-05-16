@@ -2,7 +2,7 @@ import * as Actions from "./actionTypes"
 import axios from "axios"
 import { apiHost } from "../../../constants"
 
-export const addBook = (values,history) => {
+export const addBook = (values, history) => {
     return (dispacth) => {
         axios.post(`${apiHost}/books`, values).then((result) => {
             console.log(result.data)
@@ -10,17 +10,29 @@ export const addBook = (values,history) => {
                 type: Actions.ADD_BOOK,
                 payload: result.data
             })
-            history.push("/")
+            history.push("/react-bootcamp-bookshelf")
         }).catch((err) => {
             console.log(err)
         })
     }
 }
+export const editBook = (values, history, id) => {
+    return dispatch => {
+        axios.put(`${apiHost}/books/${id}`, values).then((result) => {
+            dispatch({ type: Actions.UPDATE_BOOKS, payload: result.data })
+            history.push("/react-bootcamp-bookshelf");
+        }).catch((err) => {
+            console.log(err);
+        });
+    };
+};
+
+
 
 export const getBooks = () => {
     return dispatch => {
         dispatch({
-            type:Actions.LOAD_BOOKS
+            type: Actions.LOAD_BOOKS
         })
         axios.get(`${apiHost}/books`).then((result) => {
             dispatch({
@@ -37,7 +49,7 @@ export const setFilter = (filter) => {
     return dispatch => {
         dispatch({
             type: Actions.SET_FILTER,
-            payload:filter
+            payload: filter
         })
     }
 }
@@ -46,7 +58,7 @@ export const searchBooks = (searchTerm) => {
     return dispatch => {
         dispatch({
             type: Actions.SEARCH_BOOKS,
-            payload:searchTerm
+            payload: searchTerm
         })
     }
 }
