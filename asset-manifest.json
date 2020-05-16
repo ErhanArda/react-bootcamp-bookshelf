@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-bootcamp-bookshelf/static/css/main.990dbf5c.chunk.css",
-    "main.js": "/react-bootcamp-bookshelf/static/js/main.c3c7cc27.chunk.js",
-    "main.js.map": "/react-bootcamp-bookshelf/static/js/main.c3c7cc27.chunk.js.map",
+    "main.css": "/react-bootcamp-bookshelf/static/css/main.878d4a61.chunk.css",
+    "main.js": "/react-bootcamp-bookshelf/static/js/main.dfd2b3b2.chunk.js",
+    "main.js.map": "/react-bootcamp-bookshelf/static/js/main.dfd2b3b2.chunk.js.map",
     "runtime-main.js": "/react-bootcamp-bookshelf/static/js/runtime-main.e9184b8b.js",
     "runtime-main.js.map": "/react-bootcamp-bookshelf/static/js/runtime-main.e9184b8b.js.map",
     "static/css/2.de424728.chunk.css": "/react-bootcamp-bookshelf/static/css/2.de424728.chunk.css",
-    "static/js/2.e0a194ed.chunk.js": "/react-bootcamp-bookshelf/static/js/2.e0a194ed.chunk.js",
-    "static/js/2.e0a194ed.chunk.js.map": "/react-bootcamp-bookshelf/static/js/2.e0a194ed.chunk.js.map",
+    "static/js/2.2fff47d5.chunk.js": "/react-bootcamp-bookshelf/static/js/2.2fff47d5.chunk.js",
+    "static/js/2.2fff47d5.chunk.js.map": "/react-bootcamp-bookshelf/static/js/2.2fff47d5.chunk.js.map",
     "index.html": "/react-bootcamp-bookshelf/index.html",
-    "precache-manifest.cac6fa20219060b4f9008984981b68f6.js": "/react-bootcamp-bookshelf/precache-manifest.cac6fa20219060b4f9008984981b68f6.js",
+    "precache-manifest.b924ebce306f446df32aa16bb6c6eb83.js": "/react-bootcamp-bookshelf/precache-manifest.b924ebce306f446df32aa16bb6c6eb83.js",
     "service-worker.js": "/react-bootcamp-bookshelf/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/react-bootcamp-bookshelf/static/css/2.de424728.chunk.css.map",
-    "static/css/main.990dbf5c.chunk.css.map": "/react-bootcamp-bookshelf/static/css/main.990dbf5c.chunk.css.map",
-    "static/js/2.e0a194ed.chunk.js.LICENSE.txt": "/react-bootcamp-bookshelf/static/js/2.e0a194ed.chunk.js.LICENSE.txt"
+    "static/css/main.878d4a61.chunk.css.map": "/react-bootcamp-bookshelf/static/css/main.878d4a61.chunk.css.map",
+    "static/js/2.2fff47d5.chunk.js.LICENSE.txt": "/react-bootcamp-bookshelf/static/js/2.2fff47d5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e9184b8b.js",
     "static/css/2.de424728.chunk.css",
-    "static/js/2.e0a194ed.chunk.js",
-    "static/css/main.990dbf5c.chunk.css",
-    "static/js/main.c3c7cc27.chunk.js"
+    "static/js/2.2fff47d5.chunk.js",
+    "static/css/main.878d4a61.chunk.css",
+    "static/js/main.dfd2b3b2.chunk.js"
   ]
 }
