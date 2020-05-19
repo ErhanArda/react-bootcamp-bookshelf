@@ -9,7 +9,7 @@ const Books = (props) => {
         {
             props.items.map((item) => {
                 return <Col xs={6} md={4} lg={3}>
-                    <Book {...item}/>
+                    <Book id={item.id} {...item}/>
                 </Col>
             })
         }

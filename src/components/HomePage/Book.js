@@ -28,7 +28,7 @@ const Book = (props) => {
                 <CardText>{title}</CardText>
                 {/* <CardText>{description}</CardText> */}
                 <CardLink>
-                    Details
+                <Link to={`/book-details/${id}`}>Details</Link>
                     </CardLink>
                 <CardLink>
                     <Link to={`/edit-book/${id}`}>Edit book</Link>

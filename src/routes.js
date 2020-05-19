@@ -1,5 +1,4 @@
-import { HomePage } from "./containers"
-import { AddBook } from "./containers"
+import { HomePage,AddBook,BookDetails } from "./containers"
 
 const routes = [
     {
@@ -26,7 +25,14 @@ const routes = [
             isEdit: true
         },
         component: AddBook
-
-    }
+    },
+    {
+        title: "Book Details",
+        path: "/book-details/:id",
+        exact: false,
+        componentProps: {
+        },
+        component: BookDetails
+    }, 
 ]
 export default routes
