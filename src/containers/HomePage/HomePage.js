@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { Books, FilterSortBar } from "../../components"
 import { getBooks } from "../../state/ducks/books/actions"
-import { Container, Pagination, PaginationItem, PaginationLink } from 'reactstrap'
+import { Container, Pagination, PaginationItem, PaginationLink,ButtonGroup, Button } from 'reactstrap'
 import { itemsPerPage } from "../../constants"
 
 export class HomePage extends Component {
@@ -10,7 +10,8 @@ export class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            activePage: 1
+            activePage: 1,
+            view: "cards"
         }
     }
 
@@ -59,7 +60,7 @@ export class HomePage extends Component {
             books = <h2>NO BOOK HERE</h2>
         }
         else {
-            books = <Books items={sortedBooks.slice(itemsPerPage * (this.state.activePage - 1), itemsPerPage * this.state.activePage)} />
+            books = <Books view={this.state.view} items={sortedBooks.slice(itemsPerPage * (this.state.activePage - 1), itemsPerPage * this.state.activePage)} />
 
         }
         console.log("pages: ", Math.ceil(sortedBooks.length / itemsPerPage))
@@ -69,6 +70,21 @@ export class HomePage extends Component {
             <div>
                 <FilterSortBar />
                 <Container>
+                    <div>
+                        <ButtonGroup>
+                            <Button color="primary" onClick={()=>{
+                                this.setState({
+                                    view: "cards"
+                                })
+                            }} >Cards View</Button>
+                            <Button color="primary"onClick={()=>{
+                                this.setState({
+                                    view: "list"
+                                })
+                            }} >List View</Button>
+                        </ButtonGroup>
+                    </div>
+
                     <div className="books-holder">
                         {books}
                     </div>

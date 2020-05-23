@@ -8,7 +8,7 @@ const Books = (props) => {
         <Row>
         {
             props.items.map((item) => {
-                return <Col xs={6} md={4} lg={3}>
+                return <Col xs={props.view ==="cards"? 6 : 12} md={props.view ==="cards"?4:12} lg={props.view ==="cards"?3:12}>
                     <Book id={item.id} {...item}/>
                 </Col>
             })

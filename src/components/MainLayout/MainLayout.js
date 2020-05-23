@@ -1,29 +1,20 @@
-import React, { Component } from 'react'
-//import { Container } from "reactstrap"
+import React, {useEffect} from 'react'
 
-class MainLayout extends Component {
-    // eslint-disable-next-line no-useless-constructor
-    constructor(props) {
-        super(props)
+const MainLayout = (props) => {
 
-    }
-
-    //changes tab title
-    componentDidMount() {
-        const title = this.props.title;
+    useEffect(() => {
+        const title = props.title
         document.title = title
-    }
+    }, [])
 
-    render() {
-        console.log(this.props)
+    const Children = props.children
 
-        const Children = this.props.children
-        return (
-            <div>
-                <Children routerProps={this.props.routerProps} componentProps={this.props.componentProps} />
-            </div>
-        )
-    }
+    return (
+        <div>
+            <Children routerProps={props.routerProps} componentProps={props.componentProps} />
+        </div>
+    )
 }
 
 export default MainLayout
+
