@@ -1,42 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookInfos } from "../../components"
 import axios from 'axios';
 import { apiHost } from "../../constants"
-class BookDetails extends Component {
-        // eslint-disable-next-line no-useless-constructor
-        constructor(props) {
-            super(props)
-    
-            this.state = {
-                book: ""
-            }
-        }
 
-    componentDidMount() {
-        const id = this.props.routerProps.match.params.id
+
+const BookDetails = (props) => {
+
+    const [book, setBook] = useState("")
+
+    useEffect(() => {
+        const id = props.routerProps.match.params.id
         if (id) {
             axios.get(`${apiHost}/books/${id}`).then((result) => {
                 console.log("result: ", result)
-                this.setState({
-                    book: result.data
-                })
+                setBook(result.data)
             })
         }
-    }
+    }, [])
 
-    render() {
-        console.log(this.props)
-        const selectedBooks = this.props.routerProps.match.params.id
-        console.log("s",selectedBooks)
-        if(!this.state.book){
+
+    console.log(props)
+
+    const selectedBooks = props.routerProps.match.params.id
+    console.log("s", selectedBooks)
+    if (!book) {
         return <h2>{selectedBooks} books not found!</h2>
-        }
-        return (
-            <div>
-                {/* {this.state.book.title} */}
-                <BookInfos id={selectedBooks} book={this.state.book} />
-            </div>
-        );
     }
+    return (
+        <div>
+            <BookInfos id={selectedBooks} book={book} />
+        </div>
+    );
 }
+
 export default BookDetails

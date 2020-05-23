@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import {
     CardImg, CardText, CardBody, CardLink
 } from 'reactstrap';
@@ -7,7 +7,18 @@ import { Link } from 'react-router-dom';
 
 const Book = (props) => {
     //console.log(props)
-    const { imageUrl, title, rating, id,review, goodReads } = props
+    const { imageUrl, title, rating, id,review, goodReads,randomId  } = props
+    useEffect(()=>{
+        console.log(randomId)
+    },[randomId])
+
+
+    useEffect(()=>{
+        return ()=>{
+            console.log("Components are going")
+        }
+    },[])
+
     console.log(goodReads)
     return (
         <StyledBook>

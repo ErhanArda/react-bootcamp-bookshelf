@@ -1,37 +1,24 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { AddBookForm } from "../../components"
 import { Row, Col, Container } from 'reactstrap'
 import axios from 'axios';
 import { apiHost } from "../../constants"
 
 
-class AddBook extends React.Component {
-    // eslint-disable-next-line no-useless-constructor
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            book: ""
-        }
-    }
-
-    componentDidMount() {
-        const id = this.props.routerProps.match.params.id
+const AddBook = (props) => {
+    const [book,setBook] = useState("")
+    useEffect(()=>{
+        const id = props.routerProps.match.params.id
         if (id) {
             axios.get(`${apiHost}/books/${id}`).then((result) => {
                 console.log("result: ", result)
-                this.setState({
-                    book:result.data
-                })
+                setBook(result.data)
             })
         }
-    }
+    },[])
 
-
-    render() {
-        console.log(this.props)
-        const isEdit = this.props.componentProps.isEdit
-        const id = this.props.routerProps.match.params.id
+        const isEdit = props.componentProps.isEdit
+        const id = props.routerProps.match.params.id
         console.log(id)
         return (
             <Container>
@@ -42,12 +29,11 @@ class AddBook extends React.Component {
                         }
                     </Col>
                     <Col>
-                        <AddBookForm isEdit={isEdit}  id={id} book={this.state.book} />
+                        <AddBookForm isEdit={isEdit}  id={id} book={book} />
                     </Col>
                 </Row>
             </Container>
         )
-    }
-
 }
-export default AddBook;
+
+export default AddBook
