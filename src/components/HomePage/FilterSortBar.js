@@ -10,7 +10,7 @@ const FilterSortBar = (props) => {
     return (
         <div>
 
-            <Container fluid className="bg-white" style={{padding:"15px"}}>
+            <Container fluid className="bg-white" style={{padding:"50px"}}>
                 <Row>
                     <Col xs={6}>
                         <Nav>
